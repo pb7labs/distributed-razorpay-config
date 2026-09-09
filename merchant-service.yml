@@ -10,3 +10,20 @@ jwt:
 
 webhook:
   secret.encryption-key: lb2T4tEnYnS0DVgLMi26JXNgy4siER1iPeoyjKybb4Y=
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  datasource:
+    url: jdbc:postgresql://postgres.razorpay-core.svc.cluster.local:5432/razorpay-merchant-db
+    username: merchant_user
+    password: ${MERCHANT_DB_PASSWORD}
+
+jwt:
+  secret-key: ${JWT_SECRET}
+
+webhook:
+  secret-encryption-key: ${WEBHOOK_SECRET_ENCRYPTION_KEY}
